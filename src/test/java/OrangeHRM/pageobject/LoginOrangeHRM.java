@@ -45,7 +45,6 @@ public class LoginOrangeHRM extends PageObject {
 
 	private static final String clickMenu_Admin = "//a[@href='/web/index.php/admin/viewAdminModule']";
 	
-
 	@FindBy(xpath = "(//div[@class='oxd-select-text oxd-select-text--active'])[1]")
 	WebElement clickCombo;
 
@@ -85,21 +84,14 @@ public class LoginOrangeHRM extends PageObject {
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement btnSave;
 
-
-
 	public void Login(String usurioLogin, String passwordLogin) throws InterruptedException {
 		util.waitForPageLoad(getDriver());
 		clickLogo.click();
 		clickUsuario.click();
-
-		//txtUsuario.sendKeys(usurioLogin);
 		WebDriverWait wait = new WebDriverWait(getDriver(), 5);
 		WebElement elemento = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(txtUsuario)));
 		elemento.sendKeys(usurioLogin);
-
 		clickPassword.click();
-
-		//txtPassword.sendKeys(passwordLogin);
 		elemento = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(txtPassword)));
 		elemento.sendKeys(passwordLogin);
 		Serenity.takeScreenshot();
@@ -113,7 +105,6 @@ public class LoginOrangeHRM extends PageObject {
 	}
 
 	public boolean validarIngreso() throws InterruptedException {
-		//panel.isDisplayed();
 		getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		WebElement elemento = getDriver().findElement(By.xpath(panel));
 		Serenity.takeScreenshot();
@@ -137,7 +128,6 @@ public class LoginOrangeHRM extends PageObject {
 	public void clickOpcionMenu(String menu) throws InterruptedException {
 		switch (menu) {
 			case "Admin":
-				//clickMenu_Admin.click();
 				WebDriverWait wait = new WebDriverWait(getDriver(), 5);
 				WebElement wclickMenu_Admin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(clickMenu_Admin)));
 				wclickMenu_Admin.click();
@@ -218,8 +208,6 @@ public class LoginOrangeHRM extends PageObject {
 		btnSave.click();
 		Thread.sleep(5000);
 	}
-
-
 
 	private static void seleccionarCBO(Robot robot) throws InterruptedException {
 		Thread.sleep(2000);
